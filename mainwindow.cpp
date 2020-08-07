@@ -40,7 +40,12 @@ connect(ui->pushButtonExample,SIGNAL(clicked(bool)),this,SLOT(example()));
        connect(l, &QLineEdit::textChanged,this,&MainWindow::checkString);
 }
 void MainWindow::solve(){
+    for(auto l : lists)
+        l->setStyleSheet("background-color: rgb(211, 215, 207);");
+
+
      sudoku.setGrid(lists);
+    // sudoku.sudokuGrid();
      sudoku.showGrid(lists);
 }void MainWindow::clear(){
     for(auto l : lists){
