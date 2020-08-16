@@ -5,11 +5,10 @@
 #include<QLineEdit>
 #include<QtCore>
 #include<QtDebug>
-#include<Generator.h>
 using namespace std;
 #define N 9
 class SolvingSudoku{
-Generator generator;
+
 public:
     //int **grid;
     int grid9[N][N] = {
@@ -58,14 +57,14 @@ public:
         {0, 0, 0, 0, 0, 0, 0, 7, 4},
         {0, 0, 5, 2, 0, 6, 3, 0, 0}
     };
-     //int ** grid10;
+    //int ** grid10;
 
     void showGrid(QList<QLineEdit *> lists){
-       int counter =0;
-       for(auto l : lists)
-           if(l->text().toInt()>0)counter++;
-   //   qDebug()<<"checkBeforeSolved()==false "<<checkBeforeSolved();
-       if(counter > 26  && solveSudoku()){
+        int counter =0;
+        for(auto l : lists)
+            if(l->text().toInt()>0)counter++;
+        //   qDebug()<<"checkBeforeSolved()==false "<<checkBeforeSolved();
+        if(counter > 26  && solveSudoku()){
             int l=0;
             for (int row = 0; row < N; row++)
                 for (int col = 0; col < N; col++,l++)
@@ -74,28 +73,21 @@ public:
 
         }
         else{
-           for(auto l : lists)
-               if(l->text().toInt()!=0)
-                   l->setStyleSheet("background-color:rgb(204, 0, 0)");
+            for(auto l : lists)
+                if(l->text().toInt()!=0)
+                    l->setStyleSheet("background-color:rgb(204, 0, 0)");
         }
 
 
     }
     void showExm(QList<QLineEdit *> lists){
-         qDebug()<<"wth";
-       int ** grid10 = new int *[9];
-//        for(int i = 0; i<9;i++)
-//            grid10[i]=new int[9];
-
-        grid10 =
-                generator.getGrid();
 
         int l=0;
         for (int row = 0; row < N; row++)
             for (int col = 0; col < N; col++,l++)
-                if(grid10[row][col] !=0)
-                   // qDebug()<<grid10[row][col];
-                lists[l]->setText(QString::number(grid10[row][col]));
+                if(grid9[row][col] !=0)
+
+                    lists[l]->setText(QString::number(grid9[row][col]));
     }
     void setGrid(QList<QLineEdit *> lists){
         int l=0;
@@ -111,25 +103,25 @@ public:
         bool endCheck=false;
         for (int row = 0; row < N; row++){
             if(endCheck==false)
-            for (int col = 0; col < N; col++){
-                if (grid[row][col] != 0){
-                     qDebug()<< col<<"isPresentInCol(row,col, grid[row][col]) "
-                           <<isPresentInCol(row,col, grid[row][col]);
-                      qDebug()<<row<<"isPresentInRow(row,col,grid[row][col]) "
-                             <<isPresentInRow(row,col,grid[row][col]);
-//                      qDebug()<<row - row%3<<" *"<<col - col%3<<"isPresentInBox(row - row%3 ,col - col%3, grid[row][col]) "
-//                             <<isPresentInBox2(row - row%3 ,col - col%3, grid[row][col]);
-                   endCheck =isPresentInRow(row,col,grid[row][col]);
+                for (int col = 0; col < N; col++){
+                    if (grid[row][col] != 0){
+                        qDebug()<< col<<"isPresentInCol(row,col, grid[row][col]) "
+                                <<isPresentInCol(row,col, grid[row][col]);
+                        qDebug()<<row<<"isPresentInRow(row,col,grid[row][col]) "
+                               <<isPresentInRow(row,col,grid[row][col]);
+                        //                      qDebug()<<row - row%3<<" *"<<col - col%3<<"isPresentInBox(row - row%3 ,col - col%3, grid[row][col]) "
+                        //                             <<isPresentInBox2(row - row%3 ,col - col%3, grid[row][col]);
+                        endCheck =isPresentInRow(row,col,grid[row][col]);
                         if(endCheck)  break;
 
 
-                    endCheck =isPresentInCol(row,col, grid[row][col]);
+                        endCheck =isPresentInCol(row,col, grid[row][col]);
                         if(endCheck)  break;
-//                    endCheck =isPresentInBox2(row - row%3 ,col - col%3, grid[row][col]);
-//                       if(endCheck)  break;
+                        //                    endCheck =isPresentInBox2(row - row%3 ,col - col%3, grid[row][col]);
+                        //                       if(endCheck)  break;
+                    }
+
                 }
-
-            }
         }
         return endCheck;
     }
