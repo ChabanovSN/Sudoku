@@ -5,11 +5,11 @@
 #include<QLineEdit>
 #include<QtCore>
 #include<QtDebug>
-
+#include<Generator.h>
 using namespace std;
 #define N 9
 class SolvingSudoku{
-
+Generator generator;
 public:
     //int **grid;
     int grid9[N][N] = {
@@ -58,7 +58,7 @@ public:
         {0, 0, 0, 0, 0, 0, 0, 7, 4},
         {0, 0, 5, 2, 0, 6, 3, 0, 0}
     };
-    // int ** grid;
+     //int ** grid10;
 
     void showGrid(QList<QLineEdit *> lists){
        int counter =0;
@@ -82,11 +82,20 @@ public:
 
     }
     void showExm(QList<QLineEdit *> lists){
+         qDebug()<<"wth";
+       int ** grid10 = new int *[9];
+//        for(int i = 0; i<9;i++)
+//            grid10[i]=new int[9];
+
+        grid10 =
+                generator.getGrid();
+
         int l=0;
         for (int row = 0; row < N; row++)
             for (int col = 0; col < N; col++,l++)
-                if(grid9[row][col] !=0)
-                lists[l]->setText(QString::number(grid9[row][col]));
+                if(grid10[row][col] !=0)
+                   // qDebug()<<grid10[row][col];
+                lists[l]->setText(QString::number(grid10[row][col]));
     }
     void setGrid(QList<QLineEdit *> lists){
         int l=0;
