@@ -20,6 +20,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    Generator.h \
     SolvingSudoKu.h \
     mainwindow.h
 

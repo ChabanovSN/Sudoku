@@ -2478,7 +2478,7 @@
      <string>Очистить</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonExample">
+   <widget class="QPushButton" name="pushButtonEasy">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -2486,6 +2486,41 @@
       <width>21</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(237, 212, 0);</string>
+    </property>
+    <property name="text">
+     <string>!!!</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonMidle">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>30</y>
+      <width>21</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(78, 154, 6);</string>
+    </property>
+    <property name="text">
+     <string>!!!</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonHard">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>60</y>
+      <width>21</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(204, 0, 0);</string>
     </property>
     <property name="text">
      <string>!!!</string>

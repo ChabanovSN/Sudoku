@@ -35,7 +35,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 connect(ui->pushButtonClear,SIGNAL(clicked(bool)),this,SLOT(clear()));
 connect(ui->pushButtonSolve,SIGNAL(clicked(bool)),this,SLOT(solve()));
-connect(ui->pushButtonExample,SIGNAL(clicked(bool)),this,SLOT(example()));
+connect(ui->pushButtonEasy,SIGNAL(clicked(bool)),this,SLOT(exampleEasy()));
+connect(ui->pushButtonMidle,SIGNAL(clicked(bool)),this,SLOT(exampleMidle()));
+connect(ui->pushButtonHard,SIGNAL(clicked(bool)),this,SLOT(exampleHard()));
    for(auto l : lists)
        connect(l, &QLineEdit::textChanged,this,&MainWindow::checkString);
 }
@@ -62,8 +64,17 @@ void MainWindow::checkString(const QString & str){
 
 
 }
-void MainWindow::example(){
-    sudoku.showExm(lists);
+void MainWindow::exampleEasy(){
+    clear();
+    sudoku.showExm(lists,1);
+}
+void MainWindow::exampleMidle(){
+    clear();
+    sudoku.showExm(lists,2);
+}
+void MainWindow::exampleHard(){
+    clear();
+    sudoku.showExm(lists,3);
 }
 MainWindow::~MainWindow()
 {

@@ -5,12 +5,13 @@
 #include<QLineEdit>
 #include<QtCore>
 #include<QtDebug>
+#include"Generator.h"
 using namespace std;
 #define N 9
 class SolvingSudoku{
-
+Generator generator;
 public:
-    //int **grid;
+    int **gridE;
     int grid9[N][N] = {
         {9, 0, 0, 4, 0, 6, 0, 1, 0},
         {0, 1, 5, 9, 0, 0, 0, 0, 0},
@@ -57,14 +58,14 @@ public:
         {0, 0, 0, 0, 0, 0, 0, 7, 4},
         {0, 0, 5, 2, 0, 6, 3, 0, 0}
     };
-    //int ** grid10;
+
 
     void showGrid(QList<QLineEdit *> lists){
         int counter =0;
         for(auto l : lists)
             if(l->text().toInt()>0)counter++;
-        //   qDebug()<<"checkBeforeSolved()==false "<<checkBeforeSolved();
-        if(counter > 26  && solveSudoku()){
+
+        if(counter > 21  && solveSudoku()){
             int l=0;
             for (int row = 0; row < N; row++)
                 for (int col = 0; col < N; col++,l++)
@@ -80,14 +81,13 @@ public:
 
 
     }
-    void showExm(QList<QLineEdit *> lists){
-
+    void showExm(QList<QLineEdit *> lists,int option){
+       gridE = generator.getBroud(option);
         int l=0;
         for (int row = 0; row < N; row++)
             for (int col = 0; col < N; col++,l++)
-                if(grid9[row][col] !=0)
-
-                    lists[l]->setText(QString::number(grid9[row][col]));
+                if(gridE[row][col] !=0)
+                    lists[l]->setText(QString::number(gridE[row][col]));
     }
     void setGrid(QList<QLineEdit *> lists){
         int l=0;

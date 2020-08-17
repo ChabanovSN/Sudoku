@@ -20,7 +20,9 @@ public slots:
    void checkString(const QString &);
    void solve();
    void clear();
-   void example();
+   void exampleEasy();
+   void exampleMidle();
+   void exampleHard();
 private:
     bool wrongNumber;
     QList<QLineEdit *> lists;
